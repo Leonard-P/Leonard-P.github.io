@@ -98,6 +98,34 @@ class FixedDropout extends tf.layers.Layer {
   }
   tf.serialization.registerClass(FixedDropout);
 
+  class Lambda extends tf.layers.Layer {
+    constructor(config) {
+      super(config);
+      this.alpha = config.alpha;
+
+    }
+    /*build(inputShape) {
+      this.x = this.addWeight('x', [], 'float32', tf.initializers.ones());
+    }*/
+    // Das auskommentierte scheint eigentlich benötigt zu werden, aber mit funktioniert es nicht.
+    call(input) {
+      return tf.tidy(() => {
+        tf.fill([1, 128], 1000).print();
+        console.log(tf.mul(input, tf.fill([1, 128], 1000)));
+        return tf.mul(input, tf.fill([1, 128], 1000));
+      });
+    }
+    getConfig() {
+      const config = super.getConfig();
+      Object.assign(config, {alpha: this.alpha});
+      return config;
+    }
+    static get className() {
+      return 'Lambda';
+    }
+  }
+  tf.serialization.registerClass(Lambda);
+
 /**
  Keine Ahnung, ob das Preprocessing korrekt funktioniert. Hab versucht, die preprocess_input so genau wie möglich nach JS zu übersetzen.
  Ein paar Tests ergeben etwas andere Werte, ähnlich nur bei 1:1-Bildern. Die letzten Werte stimmen überein, die ersten irgendwie nicht.
@@ -130,7 +158,7 @@ function preprocess_input(img)
 }
 
 jQuery(document).ready(function($) {
-  tf.loadLayersModel("base/model.json").then(function(model){
+  tf.loadLayersModel("wrapped_base/model.json").then(function(model){
     var pred = model.predict(preprocess_input($("#img").get(0)), "float32");
     pred.data().then((pred) => {
       console.log(pred);
