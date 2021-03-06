@@ -133,7 +133,7 @@ jQuery(document).ready(function($) {
   tf.loadLayersModel("base/model.json").then(function(model){
     var pred = model.predict(preprocess_input($("#img").get(0)), "float32");
     pred.data().then((pred) => {
-      console.log(pred[0]);
+      console.log(pred);
     })
   })   
 });
