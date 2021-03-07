@@ -43,34 +43,36 @@ function crop(url, aspectRatio) {
 }
 
 class SwishL extends tf.layers.Layer {
-    static get className() {
-      return 'SwishL';
-    }
-  
-    call(x) {
-      return tf.tidy(() => {
-        return K.sigmoid(x.mul(alpha)).mul(x);
-      });
-    }
-  
+  static get className() {
+    return 'SwishL';
   }
-  
-  tf.serialization.registerClass(SwishL);                                                                             
-         
-   
-  class Swish extends tf.layers.activation  {                                                                                                                                                  
-    static get className() {
-     return 'swish';   
-    }
-  
-    apply(x) {
-      return tf.tidy(() => {
-        K.sigmoid(x.mul(alpha)).mul(x) 
-        });
-    }
-  }     
+
+  call(x) {
+    return tf.tidy(() => {
+      return K.sigmoid(x.mul(alpha)).mul(x);
+    });
+  }
+
+}
+
+tf.serialization.registerClass(SwishL);                                                                             
+       
+ 
+class Swish extends tf.layers.activation  {
+                                                                                                                                                       
+  static get className() {
+   return 'swish';   
+  }
+
+  apply(x) {
+    return tf.tidy(() => {
+      K.sigmoid(x.mul(alpha)).mul(x) 
+      });
+  }
+}     
+                                                                    
+tf.serialization.registerClass(Swish);    
                                                                       
-  tf.serialization.registerClass(Swish);    
 
 class FixedDropout extends tf.layers.Layer {
     constructor() {
@@ -89,7 +91,7 @@ class FixedDropout extends tf.layers.Layer {
   }
   tf.serialization.registerClass(FixedDropout);
 
-  class Lambda extends tf.layers.Layer {
+/*  class Lambda extends tf.layers.Layer {
     constructor() {
       super({});
     }
@@ -109,7 +111,7 @@ class FixedDropout extends tf.layers.Layer {
       return 'Lambda';
     }
   }
-  tf.serialization.registerClass(Lambda);
+  tf.serialization.registerClass(Lambda);*/
 
 /**
  Keine Ahnung, ob das Preprocessing korrekt funktioniert. Hab versucht, die preprocess_input so genau wie möglich nach JS zu übersetzen.
@@ -143,10 +145,12 @@ function preprocess_input(img)
 }
 
 jQuery(document).ready(function($) {
-  tf.loadLayersModel("wrapped_base/model.json").then(function(model){
+  tf.loadLayersModel("base_mod_noact/model.json").then(function(model){
     var pred = model.predict(preprocess_input($("#img").get(0)), "float32");
     pred.data().then((pred) => {
-      console.log(pred);
+      pred = tf.tensor(pred);
+      pred = pred.div(tf.scalar(1000));
+      pred.print();
     })
   })   
 });
