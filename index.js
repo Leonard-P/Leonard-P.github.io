@@ -41,37 +41,6 @@ function crop(url, aspectRatio) {
       inputImage.src = url;
     });
 }
-
-class SwishL extends tf.layers.Layer {
-  static get className() {
-    return 'SwishL';
-  }
-
-  call(x) {
-    return tf.tidy(() => {
-      return K.sigmoid(x.mul(alpha)).mul(x);
-    });
-  }
-
-}
-
-tf.serialization.registerClass(SwishL);                                                                             
-       
- 
-class Swish extends tf.layers.activation  {
-                                                                                                                                                       
-  static get className() {
-   return 'swish';   
-  }
-
-  apply(x) {
-    return tf.tidy(() => {
-      K.sigmoid(x.mul(alpha)).mul(x) 
-      });
-  }
-}     
-                                                                    
-tf.serialization.registerClass(Swish);    
                                                                       
 
 class FixedDropout extends tf.layers.Layer {
@@ -81,6 +50,10 @@ class FixedDropout extends tf.layers.Layer {
 
     call(input) {
       return tf.tidy(() => {
+        if (Array.isArray(input)) {
+          input = input[0];
+          console.log('array conversion')
+        }
         return input;
       });
     }
@@ -145,12 +118,14 @@ function preprocess_input(img)
 }
 
 jQuery(document).ready(function($) {
-  tf.loadLayersModel("base_mod_noact/model.json").then(function(model){
+  tf.loadLayersModel("base/model.json").then(function(model){
     var pred = model.predict(preprocess_input($("#img").get(0)), "float32");
     pred.data().then((pred) => {
       pred = tf.tensor(pred);
-      pred = pred.div(tf.scalar(1000));
       pred.print();
+      //pred = pred.div(tf.scalar(Math.pow(10, 12)));
+      //pred = K.sigmoid(pred);
+      //pred.print();
     })
   })   
 });
