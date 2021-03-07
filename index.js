@@ -90,7 +90,7 @@ class FixedDropout extends tf.layers.Layer {
  Keine Ahnung, ob das Preprocessing korrekt funktioniert. Hab versucht, die preprocess_input so genau wie möglich nach JS zu übersetzen.
  Ein paar Tests ergeben etwas andere Werte, ähnlich nur bei 1:1-Bildern. Die letzten Werte stimmen überein, die ersten irgendwie nicht.
  */
-function preprocess_input(img)
+function preprocessInput(img)
 {
     img = tf.browser.fromPixels(img);
     img = tf.image.resizeBilinear(img, [224, 224]).toFloat();
@@ -119,7 +119,7 @@ function preprocess_input(img)
 
 jQuery(document).ready(function($) {
   tf.loadLayersModel("base/model.json").then(function(model){
-    var pred = model.predict(preprocess_input($("#img").get(0)), "float32");
+    var pred = model.predict(preprocessInput($("#img").get(0)), "float32");
     pred.data().then((pred) => {
       pred = tf.tensor(pred);
       pred.print();
