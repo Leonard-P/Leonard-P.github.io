@@ -58,8 +58,7 @@ class SwishL extends tf.layers.Layer {
   tf.serialization.registerClass(SwishL);                                                                             
          
    
-  class Swish extends tf.layers.activation  {
-                                                                                                                                                         
+  class Swish extends tf.layers.activation  {                                                                                                                                                  
     static get className() {
      return 'swish';   
     }
@@ -74,24 +73,16 @@ class SwishL extends tf.layers.Layer {
   tf.serialization.registerClass(Swish);    
 
 class FixedDropout extends tf.layers.Layer {
-    constructor(config) {
-      super(config);
-      this.alpha = config.alpha;
+    constructor() {
+      super({});
     }
-    /*build(inputShape) {
-      this.x = this.addWeight('x', [], 'float32', tf.initializers.ones());
-    }*/
-    // Das auskommentierte scheint eigentlich benötigt zu werden, aber mit funktioniert es nicht.
+
     call(input) {
       return tf.tidy(() => {
         return input;
       });
     }
-    getConfig() {
-      const config = super.getConfig();
-      Object.assign(config, {alpha: this.alpha});
-      return config;
-    }
+
     static get className() {
       return 'FixedDropout';
     }
@@ -99,27 +90,21 @@ class FixedDropout extends tf.layers.Layer {
   tf.serialization.registerClass(FixedDropout);
 
   class Lambda extends tf.layers.Layer {
-    constructor(config) {
-      super(config);
-      this.alpha = config.alpha;
-
+    constructor() {
+      super({});
     }
-    /*build(inputShape) {
-      this.x = this.addWeight('x', [], 'float32', tf.initializers.ones());
-    }*/
-    // Das auskommentierte scheint eigentlich benötigt zu werden, aber mit funktioniert es nicht.
+
     call(input) {
       return tf.tidy(() => {
-        tf.fill([1, 128], 1000).print();
+        if (Array.isArray(input)) {
+          input = input[0];
+          console.log('array conversion')
+        }
         console.log(tf.mul(input, tf.fill([1, 128], 1000)));
         return tf.mul(input, tf.fill([1, 128], 1000));
       });
     }
-    getConfig() {
-      const config = super.getConfig();
-      Object.assign(config, {alpha: this.alpha});
-      return config;
-    }
+
     static get className() {
       return 'Lambda';
     }
