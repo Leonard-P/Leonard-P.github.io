@@ -73,10 +73,16 @@ function preprocessInput(img)
     return processedTensor;
 }
 
-function euclidean(x, y) {
-  return Math.sqrt(x.map((x, i) => Math.abs(x - y[i]) ** 2).reduce((sum, a) => sum + a));
-  //let distance =  await tf.squaredDifference(x, y).sum().sqrt().array();
-  //return distance;
+async function euclidean(x, y) {
+  //return Math.sqrt(x.map((x, i) => Math.abs(x - y[i]) ** 2).reduce((sum, a) => sum + a));
+  let distance =  await tf.squaredDifference(x, y).sum().sqrt().array();
+  return distance;
+}
+
+async function euclidean2(x, y) {
+  //return Math.sqrt(x.map((x, i) => Math.abs(x - y[i]) ** 2).reduce((sum, a) => sum + a));
+  let distance =  await tf.squaredDifference(x, y).sum().sqrt().array();
+  return distance;
 }
 
 jQuery(document).ready(function($){
@@ -88,12 +94,14 @@ async function getSimilar(model){
   pred = tf.tensor(pred.dataSync()).mul(100000).round().div(100000);
   t0 = performance.now();
   console.log(t0);
-  var distances = [];
+  /*var distances = [];
   for (let vector of vectors) {
-    distances.push(euclidean(vector, pred));
-  }
+    distances.push(await euclidean(vector, pred));
+  }*/
+  let distances = await euclidean2(vectors, pred);
   console.log(performance.now()-t0);
   pred.print();
+  distances.print();
 }
 
 
