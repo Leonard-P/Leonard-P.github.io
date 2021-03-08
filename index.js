@@ -41,50 +41,6 @@ function crop(url, aspectRatio) {
       inputImage.src = url;
     });
 }
-                                                                      
-
-class FixedDropout extends tf.layers.Layer {
-    constructor() {
-      super({});
-    }
-
-    call(input) {
-      return tf.tidy(() => {
-        if (Array.isArray(input)) {
-          input = input[0];
-          console.log('array conversion')
-        }
-        return input;
-      });
-    }
-
-    static get className() {
-      return 'FixedDropout';
-    }
-  }
-  tf.serialization.registerClass(FixedDropout);
-
-/*  class Lambda extends tf.layers.Layer {
-    constructor() {
-      super({});
-    }
-
-    call(input) {
-      return tf.tidy(() => {
-        if (Array.isArray(input)) {
-          input = input[0];
-          console.log('array conversion')
-        }
-        console.log(tf.mul(input, tf.fill([1, 128], 1000)));
-        return tf.mul(input, tf.fill([1, 128], 1000));
-      });
-    }
-
-    static get className() {
-      return 'Lambda';
-    }
-  }
-  tf.serialization.registerClass(Lambda);*/
 
 /**
  Keine Ahnung, ob das Preprocessing korrekt funktioniert. Hab versucht, die preprocess_input so genau wie möglich nach JS zu übersetzen.
@@ -117,18 +73,28 @@ function preprocessInput(img)
     return processedTensor;
 }
 
-jQuery(document).ready(function($) {
-  tf.loadLayersModel("base/model.json").then(function(model){
-    var pred = model.predict(preprocessInput($("#img").get(0)), "float32");
-    pred.data().then((pred) => {
-      pred = tf.tensor(pred);
-      pred.print();
-      //pred = pred.div(tf.scalar(Math.pow(10, 12)));
-      //pred = K.sigmoid(pred);
-      //pred.print();
-    })
-  })   
+function euclidean(x, y) {
+  return Math.sqrt(x.map((x, i) => Math.abs(x - y[i]) ** 2).reduce((sum, a) => sum + a));
+  //let distance =  await tf.squaredDifference(x, y).sum().sqrt().array();
+  //return distance;
+}
+
+jQuery(document).ready(function($){
+  tf.loadLayersModel("base/model.json").then(getSimilar);
 });
+
+async function getSimilar(model){
+  var pred = model.predict(preprocessInput($("#img").get(0)), "float32");
+  pred = tf.tensor(pred.dataSync()).mul(100000).round().div(100000);
+  t0 = performance.now();
+  console.log(t0);
+  var distances = [];
+  for (let vector of vectors) {
+    distances.push(euclidean(vector, pred));
+  }
+  console.log(performance.now()-t0);
+  pred.print();
+}
 
 
 

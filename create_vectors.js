@@ -38,23 +38,18 @@ loadImage = async img => {
 
 async function createVectors(model){
     var vectors = 'var vecs = [';
-    for(let i=0; i<=2000; i++){
+    for(let i=0; i<=100; i++){
         let img = new Image;
         img.src = '/data/' + i.toString() + '.jpg';
         await loadImage(img);
         let imgPreprocessed = preprocessInput(img);
         let vector = model.predict(imgPreprocessed).dataSync();
-        // Laut SO ist eine while-Schleife schneller als for.
-        var x = 0;
-        var l = vector.length
-        var roundedVector = [];
-        while(x < l){ 
-            let rounded = Math.round(vector[x]*100000)/100000;
-            roundedVector.push(rounded);
-            x++;
+        var vectorR = [];
+        for(let x = 0; x < vector.length; x++){ 
+            vectorR.push(Math.round(vector[x]*100000)/100000);
         }
         console.log(i.toString()+'/2000');
-        vectors += 'tf.tensor([' + roundedVector.toString() + ']),'
+        vectors += '[' + vectorR.toString() + '],'
     }
     vectors += '];'
     download(vectors, 'vectors.js', 'text/plain');
