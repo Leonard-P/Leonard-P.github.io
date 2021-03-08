@@ -98,7 +98,11 @@ async function getSimilar(model){
   for (let vector of vectors) {
     distances.push(await euclidean(vector, pred));
   }*/
-  let distances = await euclidean2(vectors, pred);
+  let vecs = []
+  for (let vector of vectors) {
+    vecs.push(vector);
+  }
+  let distances = await euclidean2(tf.stack(vecs), pred.reshape([1, 128]));
   console.log(performance.now()-t0);
   pred.print();
   distances.print();
