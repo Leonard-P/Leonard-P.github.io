@@ -69,19 +69,50 @@ function preprocessInput(img)
     let processedTensor = tf.stack([
         centeredRGB.red, centeredRGB.green, centeredRGB.blue
     ], 1, "float32").reshape([224, 224, 3]).expandDims();
-    processedTensor.print();
     return processedTensor;
 }
 
-async function euclidean(x, y) {
-  //return Math.sqrt(x.map((x, i) => Math.abs(x - y[i]) ** 2).reduce((sum, a) => sum + a));
-  let distance =  await tf.squaredDifference(x, y).sum().sqrt().array();
-  return distance;
+// Quelle: https://stackoverflow.com/questions/11301438/return-index-of-greatest-value-in-an-array
+function indexOfMin(arr) {
+  if (arr.length === 0) {
+      return -1;
+  }
+
+  var indices = [1, 2, 3, 4, 5];
+
+  var min = arr[0];
+  var minIndex = 0;
+
+  for (var i = 1; i < arr.length; i++) {
+      if (arr[i] < min) {
+          minIndex = i;
+          min = arr[i];
+      }
+  }
+
+  return minIndex;
 }
 
-async function euclidean2(x, y) {
-  //return Math.sqrt(x.map((x, i) => Math.abs(x - y[i]) ** 2).reduce((sum, a) => sum + a));
-  let distance =  await tf.squaredDifference(x, y).sum().sqrt().array();
+
+//Quelle: https://stackoverflow.com/questions/3730510/javascript-sort-array-and-return-an-array-of-indicies-that-indicates-the-positi
+function sortWithIndices(toSort) {
+  for (var i = 0; i < toSort.length; i++) {
+    toSort[i] = [toSort[i], i];
+  }
+  toSort.sort(function(left, right) {
+    return left[0] < right[0] ? -1 : 1;
+  });
+  toSort.sortIndices = [];
+  for (var j = 0; j < toSort.length; j++) {
+    toSort.sortIndices.push(toSort[j][1]);
+    toSort[j] = toSort[j][0];
+  }
+  return toSort;
+}
+
+
+async function euclidean(x, y) {
+  let distance = await tf.squaredDifference(x, y).sum(axis=1).sqrt().array();
   return distance;
 }
 
@@ -91,21 +122,15 @@ jQuery(document).ready(function($){
 
 async function getSimilar(model){
   var pred = model.predict(preprocessInput($("#img").get(0)), "float32");
-  pred = tf.tensor(pred.dataSync()).mul(100000).round().div(100000);
+  pred = tf.tensor(pred.dataSync());
   t0 = performance.now();
-  console.log(t0);
-  /*var distances = [];
-  for (let vector of vectors) {
-    distances.push(await euclidean(vector, pred));
-  }*/
-  let vecs = []
-  for (let vector of vectors) {
-    vecs.push(vector);
-  }
-  let distances = await euclidean2(tf.stack(vecs), pred.reshape([1, 128]));
+  let distances = await euclidean(tf.stack(vectors), pred.reshape([1, 128]));
   console.log(performance.now()-t0);
   pred.print();
-  console.log(distances);
+  //console.log(distances);
+  t0 = performance.now();
+  console.log(sortWithIndices(distances));
+  console.log(performance.now()-t0);
 }
 
 
