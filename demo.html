@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" type="text/css" rel="stylesheet">
+
+    <script src="lib/jquery.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!--<script src="lib/tfjs.js"></script>-->
+    <!--script src="create_vectors.js"></script-->
+    <script src="upload.js"></script>
+
+    <title>Catlab Demo</title>
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-6">
+            <div class="container py-5">
+                <h1 class="display-4">Laden Sie hier zunächst ein Katzenbild hoch</h1>
+                <img src="upload.svg" alt="" width="150" class="mb-4">
+
+                <div class="row py-4">
+                    <div class="col-lg-6 mx-auto">
+
+                        <input id="upload" type="file" onchange="readURL(this);" class="form-control border-0">
+                        <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i
+                                class="fa fa-cloud-upload mr-2 text-muted"></i><small
+                                class="text-uppercase font-weight-bold text-muted">Datei auswählen</small></label>
+
+
+                        <!-- Uploaded image area-->
+                        <p class="font-italic text-white text-center">The image uploaded will be rendered inside the box
+                            below.</p>
+                        <div class="image-area mt-4"><img id="imageResult" src="#" alt=""
+                                class="img-fluid rounded shadow-sm mx-auto d-block"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
