@@ -1,5 +1,9 @@
+body {
+    background: white !important;
+}
+
 .navbar {
-    background: #ff7230;
+    background: linear-gradient(55deg, #ffaa32 0%, #ff673c 100%)
 }
 
 .nav-link,
@@ -32,4 +36,13 @@
     opacity: 100;
     outline: none;
     box-shadow: none;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 450;
+}
+
+p {
+    font-size: larger;    
 }
