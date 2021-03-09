@@ -1,0 +1,35 @@
+.navbar {
+    background: #ff7230;
+}
+
+.nav-link,
+.navbar-brand {
+    color: white;
+    cursor: pointer;
+}
+
+.nav-link {
+    margin-right: 1em !important;
+}
+
+.nav-link:hover,
+.navbar-item:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.navbar-brand:hover {
+    color: white;
+}
+
+.navbar-collapse {
+    justify-content: flex-end;
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+    opacity: 100;
+    outline: none;
+    box-shadow: none;
+}
