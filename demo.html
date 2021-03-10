@@ -42,38 +42,23 @@
     <div class="container" style="margin-top: 150px">
         <div class="row">
             <div class="col-md-3 ratio ratio-1x1" id="upload-area">
-                <div class="p-3">
+                <div class="p-3" id="upload-content">
                     <h5 class="text-muted">Laden Sie hier ein Katzenbild hoch, zu dem unsere KI ähnliche Katzen
                         auswählt. Am Besten funktionieren Bilder, die die Katze mittig und im Vordergrund abbilden.
                     </h5>
                     <!--h5 class="text-muted small bottom_aligner align-baseline">Datenschutzhinweis: Das Bild wird nur in ihren Browser hochgeladen, nicht auf externe Server. Keine weiteren Skripte oder Personen können darauf zugreifen.</h5-->
-                    <input id="upload" type="file" onchange="readURL(this);" class="form-control border-0" style="height:0">
+                    <input id="upload" type="file" onchange="readURL(this);" class="form-control border-0"
+                        style="height:0">
                     <label for="upload" class="btn btn-secondary"> <i
-                            class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-white">Bild hochladen</small></label>
+                            class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-white">Bild
+                            hochladen</small></label>
                 </div>
             </div>
 
 
 
-            <div class="col-md-3">
 
-                <h3 class="text-muted">Laden Sie hier zunächst ein Katzenbild hoch.</h3>
-                <img src="upload.svg" alt="" width="150" id="img-up">
 
-                <div class="row">
-                    <div class="col-lg-6 mx-auto">
-
-                        <input id="upload" type="file" onchange="readURL(this);" class="form-control border-0">
-                        <label for="upload" class="btn btn-success"> <i
-                                class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-white">Datei
-                                auswählen</small></label>
-
-                        <div class="image-area mt-4"><img id="imageResult" src="#" alt=""
-                                class="img-fluid rounded shadow-sm mx-auto d-block"></div>
-                    </div>
-                </div>
-
-            </div>
         </div>
     </div>
 </body>
