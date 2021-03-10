@@ -16,7 +16,7 @@ function crop(url, aspectRatio) {
         // if it's bigger than our target aspect ratio
         let outputWidth = inputWidth;
         let outputHeight = inputHeight;
-        if (inputsImageAspectRatio > aspectRatio) {
+        if (inputImageAspectRatio > aspectRatio) {
           outputWidth = inputHeight * aspectRatio;
         } else if (inputImageAspectRatio < aspectRatio) {
           outputHeight = inputWidth / aspectRatio;
@@ -48,7 +48,7 @@ async function readURL(input) {
 
         reader.onload = function (e) {
             //console.log(e.target.result);
-            crop("url("+e.target.result+")", 1).then((img)=>{
+            crop(e.target.result, 1).then((img)=>{
                 //console.log(img);
                 $('#upload-area')
                     .attr("style", "background-image: url(" +e.target.result + ")");
