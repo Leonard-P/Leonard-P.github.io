@@ -16,7 +16,7 @@ function crop(url, aspectRatio) {
         // if it's bigger than our target aspect ratio
         let outputWidth = inputWidth;
         let outputHeight = inputHeight;
-        if (inputImageAspectRatio > aspectRatio) {
+        if (inputsImageAspectRatio > aspectRatio) {
           outputWidth = inputHeight * aspectRatio;
         } else if (inputImageAspectRatio < aspectRatio) {
           outputHeight = inputWidth / aspectRatio;
