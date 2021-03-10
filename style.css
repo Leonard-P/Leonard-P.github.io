@@ -55,7 +55,7 @@ h1 {
 #upload-area {
     background-image: url("upload.svg");
     background-repeat: no-repeat;
-    background-size: fill;
+    background-size: contain;
     width: 40%
 }
 
