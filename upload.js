@@ -52,6 +52,8 @@ async function readURL(input) {
                 //console.log(img);
                 $('#upload-area')
                     .attr("style", "background-image: url(" +e.target.result + ")");
+                document.getElementById("upload-area").style.backgroundRepeat = "no-repeat";
+                
                 $('#upload-content')
                     .attr("style", "display: none");
             });
