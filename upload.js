@@ -8,6 +8,8 @@ function readURL(input) {
         };
         reader.readAsDataURL(input.files[0]);
     }
+
+    console.log("UPLOAD")
 }
 
 $(function () {
@@ -15,6 +17,8 @@ $(function () {
         readURL(input);
     });
 });
+
+console.log("UPLOAD.js")
 
 var input = document.getElementById( 'upload' );
 var infoArea = document.getElementById( 'upload-label' );
