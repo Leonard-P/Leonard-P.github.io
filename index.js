@@ -2,7 +2,7 @@
  Keine Ahnung, ob das Preprocessing korrekt funktioniert. Hab versucht, die preprocess_input so genau wie möglich nach JS zu übersetzen.
  Ein paar Tests ergeben etwas andere Werte, ähnlich nur bei 1:1-Bildern. Die letzten Werte stimmen überein, die ersten irgendwie nicht.
  */
-var img = "aug.jpg";
+var img = "laden.svg";
 
 function preprocessInput(img)
 {
@@ -76,7 +76,6 @@ async function euclidean(x, y) {
 
 function loadAndExecuteModel(imgData){
   img = imgData;
-  document.getElementById('platz-1').src = "data/1.jpg";
   tf.loadLayersModel("base/model.json").then(getSimilar);
 }
 
