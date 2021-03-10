@@ -47,8 +47,16 @@ h1 {
     font-size: 4.5vw;
 }
 
+
 #upload {
     opacity: 0;
+}
+
+#upload-area {
+    background: url("upload.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 40%
 }
 
 #upload-label {
@@ -63,6 +71,7 @@ h1 {
     padding: 1rem;
     position: relative;
 }
+
 
 .image-area::before {
     content: 'Uploaded image result';
