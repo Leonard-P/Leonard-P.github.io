@@ -1,47 +1,3 @@
-function crop(url, aspectRatio) {
-    // we return a Promise that gets resolved with our canvas element
-    return new Promise((resolve) => {
-      // this image will hold our source image data
-      const inputImage = new Image();
-  
-      // we want to wait for our image to load
-      inputImage.onload = () => {
-        // let's store the width and height of our image
-        const inputWidth = inputImage.naturalWidth;
-        const inputHeight = inputImage.naturalHeight;
-  
-        // get the aspect ratio of the input image
-        const inputImageAspectRatio = inputWidth / inputHeight;
-  
-        // if it's bigger than our target aspect ratio
-        let outputWidth = inputWidth;
-        let outputHeight = inputHeight;
-        if (inputsImageAspectRatio > aspectRatio) {
-          outputWidth = inputHeight * aspectRatio;
-        } else if (inputImageAspectRatio < aspectRatio) {
-          outputHeight = inputWidth / aspectRatio;
-        }
-  
-        // calculate the position to draw the image at
-        const outputX = (outputWidth - inputWidth) * 0.5;
-        const outputY = (outputHeight - inputHeight) * 0.5;
-  
-        // create a canvas that will present the output image
-        const outputImage = document.createElement("canvas");
-  
-        // set it to the same size as the image
-        outputImage.width = outputWidth;
-        outputImage.height = outputHeight;
-  
-        // draw our image at position 0, 0 on the canvas
-        const ctx = outputImage.getContext("2d");
-        ctx.drawImage(inputImage, outputX, outputY);
-        resolve(outputImage);
-      };
-      inputImage.src = url;
-    });
-}
-
 /**
  Keine Ahnung, ob das Preprocessing korrekt funktioniert. Hab versucht, die preprocess_input so genau wie möglich nach JS zu übersetzen.
  Ein paar Tests ergeben etwas andere Werte, ähnlich nur bei 1:1-Bildern. Die letzten Werte stimmen überein, die ersten irgendwie nicht.
@@ -116,9 +72,9 @@ async function euclidean(x, y) {
   return distance;
 }
 
-jQuery(document).ready(function($){
+function loadAndExecuteModel(){
   tf.loadLayersModel("base/model.json").then(getSimilar);
-});
+}
 
 async function getSimilar(model){
   var pred = model.predict(preprocessInput($("#img").get(0)), "float32");
@@ -129,8 +85,9 @@ async function getSimilar(model){
   pred.print();
   //console.log(distances);
   t0 = performance.now();
-  console.log(sortWithIndices(distances));
+  indices = sortWithIndices(distances).sortIndices;
   console.log(performance.now()-t0);
+  $('#place-1').
 }
 
 
