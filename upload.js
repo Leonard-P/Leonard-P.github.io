@@ -51,7 +51,7 @@ async function readURL(input) {
             crop(e.target.result, 1).then((img)=>{
                 //console.log(img);
                 $('#upload-area')
-                    .attr("style", "background-image: url(" +e.target.result + ")");
+                    .attr("style", "background-image: url(" + img.toDataURL() + ")");
                 document.getElementById("upload-area").style.backgroundRepeat = "no-repeat";
                 
                 $('#upload-content')

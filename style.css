@@ -102,3 +102,7 @@ h1 {
     background-image: url(aug.jpg);
     background-size: contain;
 }
+
+h5 {
+    font-size: 1.5vw;
+}
