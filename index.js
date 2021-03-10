@@ -92,6 +92,7 @@ async function getSimilar(model){
   console.log(performance.now()-t0);
   for (let i=1; i<=6; i++){
     document.getElementById('platz-'+i.toString()).src = "data/" + indices[i].toString() + ".jpg";
+    document.getElementById('platz-'+i.toString()).parentElement.getElementsByClassName("card-text")[0].textContent = distances[i].toFixed(3);
   }
 }
 
