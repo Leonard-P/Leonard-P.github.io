@@ -56,6 +56,7 @@ async function readURL(input) {
                 
                 $('#upload-content')
                     .attr("style", "display: none");
+                loadAndExecuteModel(img);
             });
         };
 

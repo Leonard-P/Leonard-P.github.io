@@ -56,7 +56,8 @@ h1 {
     background-image: url("upload.svg");
     background-repeat: no-repeat;
     background-size: contain;
-    width: 40%
+    width: 40vw;
+    height: 40vw
 }
 
 #upload-label {

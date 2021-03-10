@@ -12,7 +12,7 @@
     <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"></script>
     <script src="index.js"></script>
-    <!--script src="create_vectors.js"></script-->
+    <script src="vectors.js"></script>
     <script src="upload.js"></script>
 
     <title>Catlab Demo</title>
@@ -40,9 +40,10 @@
         </div>
     </nav>
 
-    <div class="container" style="margin-top: 150px">
+    <div class="container" style="margin-top: 100px">
         <div class="row justify-content-center">
-            <div class="col-md-6 ratio ratio-1x1" id="upload-area">
+            <div class="col-md-6 shadow" id="upload-area">
+
                 <div class="p-3" id="upload-content">
                     <h5 class="text-muted" style="padding-right: 20px">Laden Sie hier ein Katzenbild hoch, zu dem unsere
                         KI ähnliche Katzen
@@ -56,12 +57,12 @@
                             hochladen</small></label>
                 </div>
             </div>
-            <div class="col-6 px-5">
+            <div class="col-6 px-5 justify-content-center">
                 <h2>Ähnliche Bilder:</h2>
-                <div class="row">
+                <div class="row gx-1">
                     <div class="col-md-4 py-1">
-                        <div class="card shadow-sm" id="platz-1">
-                            <img class="card-img-top" src="aug.jpg" alt="Bild 1">
+                        <div class="card shadow-sm">
+                            <img class="card-img-top" src="aug.jpg" alt="Bild 1" id="platz-1">
                             <div class="card-body">
                                 <h5 class="card-title">Platz 1</h5>
                                 <p class="card-text">Vektorabstand: 0.234</p>
@@ -72,8 +73,8 @@
                     </div>
 
                     <div class="col-md-4 py-1">
-                        <div class="card shadow-sm" id="platz-2">
-                            <img class="card-img-top" src="aug.jpg" alt="Bild 1">
+                        <div class="card shadow-sm">
+                            <img class="card-img-top" src="aug.jpg" alt="Bild 1" id="platz-2">
                             <div class="card-body">
                                 <h5 class="card-title">Platz 2</h5>
                                 <p class="card-text">Vektorabstand: 0.234</p>
@@ -84,8 +85,8 @@
                     </div>
 
                     <div class="col-md-4 py-1">
-                        <div class="card shadow-sm" id="platz-3">
-                            <img class="card-img-top" src="aug.jpg" alt="Bild 1">
+                        <div class="card shadow-sm">
+                            <img class="card-img-top" src="aug.jpg" alt="Bild 1" id="platz-3">
                             <div class="card-body">
                                 <h5 class="card-title">Platz 3</h5>
                                 <p class="card-text">Vektorabstand: 0.234</p>
@@ -96,8 +97,8 @@
                     </div>
 
                     <div class="col-md-4 py-1">
-                        <div class="card shadow-sm" id="platz-4">
-                            <img class="card-img-top" src="aug.jpg" alt="Bild 1">
+                        <div class="card shadow-sm">
+                            <img class="card-img-top" src="aug.jpg" alt="Bild 1" id="platz-4">
                             <div class="card-body">
                                 <h5 class="card-title">Platz 4</h5>
                                 <p class="card-text">Vektorabstand: 0.234</p>
@@ -108,8 +109,8 @@
                     </div>
 
                     <div class="col-md-4 py-1">
-                        <div class="card shadow-sm" id="platz-5">
-                            <img class="card-img-top" src="aug.jpg" alt="Bild 1">
+                        <div class="card shadow-sm">
+                            <img class="card-img-top" src="aug.jpg" alt="Bild 1" id="platz-5">
                             <div class="card-body">
                                 <h5 class="card-title">Platz 5</h5>
                                 <p class="card-text">Vektorabstand: 0.234</p>
@@ -120,8 +121,8 @@
                     </div>
 
                     <div class="col-md-4 py-1">
-                        <div class="card shadow-sm" id="platz-6">
-                            <img class="card-img-top" src="aug.jpg" alt="Bild 1">
+                        <div class="card shadow-sm">
+                            <img class="card-img-top" src="aug.jpg" alt="Bild 1" id="platz-6">
                             <div class="card-body">
                                 <h5 class="card-title">Platz 6</h5>
                                 <p class="card-text">Vektorabstand: 0.234</p>

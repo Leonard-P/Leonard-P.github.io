@@ -2,6 +2,8 @@
  Keine Ahnung, ob das Preprocessing korrekt funktioniert. Hab versucht, die preprocess_input so genau wie möglich nach JS zu übersetzen.
  Ein paar Tests ergeben etwas andere Werte, ähnlich nur bei 1:1-Bildern. Die letzten Werte stimmen überein, die ersten irgendwie nicht.
  */
+var img = "aug.jpg";
+
 function preprocessInput(img)
 {
     img = tf.browser.fromPixels(img);
@@ -72,12 +74,14 @@ async function euclidean(x, y) {
   return distance;
 }
 
-function loadAndExecuteModel(){
+function loadAndExecuteModel(imgData){
+  img = imgData;
+  document.getElementById('platz-1').src = "data/1.jpg";
   tf.loadLayersModel("base/model.json").then(getSimilar);
 }
 
 async function getSimilar(model){
-  var pred = model.predict(preprocessInput($("#img").get(0)), "float32");
+  var pred = model.predict(preprocessInput(img), "float32");
   pred = tf.tensor(pred.dataSync());
   t0 = performance.now();
   let distances = await euclidean(tf.stack(vectors), pred.reshape([1, 128]));
@@ -87,8 +91,11 @@ async function getSimilar(model){
   t0 = performance.now();
   indices = sortWithIndices(distances).sortIndices;
   console.log(performance.now()-t0);
-  $('#place-1').
+  for (let i=1; i<=6; i++){
+    document.getElementById('platz-'+i.toString()).src = "data/" + indices[i].toString() + ".jpg";
+  }
 }
+
 
 
 
