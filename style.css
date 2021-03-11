@@ -84,3 +84,10 @@ h1 {
 h5 {
     font-size: 1.5vw;
 }
+#info-icon {
+     opacity: 50%;
+}
+
+#info-icon:hover {
+    opacity: 80%;
+}
