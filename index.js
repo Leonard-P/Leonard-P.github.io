@@ -30,28 +30,6 @@ function preprocessInput(img)
     return processedTensor;
 }
 
-// Quelle: https://stackoverflow.com/questions/11301438/return-index-of-greatest-value-in-an-array
-function indexOfMin(arr) {
-  if (arr.length === 0) {
-      return -1;
-  }
-
-  var indices = [1, 2, 3, 4, 5];
-
-  var min = arr[0];
-  var minIndex = 0;
-
-  for (var i = 1; i < arr.length; i++) {
-      if (arr[i] < min) {
-          minIndex = i;
-          min = arr[i];
-      }
-  }
-
-  return minIndex;
-}
-
-
 //Quelle: https://stackoverflow.com/questions/3730510/javascript-sort-array-and-return-an-array-of-indicies-that-indicates-the-positi
 function sortWithIndices(toSort) {
   for (var i = 0; i < toSort.length; i++) {
@@ -92,7 +70,7 @@ async function getSimilar(model){
   console.log(performance.now()-t0);
   for (let i=1; i<=6; i++){
     document.getElementById('platz-'+i.toString()).src = "data/" + indices[i].toString() + ".jpg";
-    document.getElementById('platz-'+i.toString()).parentElement.getElementsByClassName("card-text")[0].textContent = "Vektorabstand: " + distances[i].toFixed(3).toString();
+    document.getElementById('platz-'+i.toString()).parentElement.getElementsByClassName("card-text")[1].textContent = "Vektorabstand: " + distances[i].toFixed(3).toString();
   }
 }
 
