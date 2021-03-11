@@ -1,7 +1,3 @@
-/**
- Keine Ahnung, ob das Preprocessing korrekt funktioniert. Hab versucht, die preprocess_input so genau wie möglich nach JS zu übersetzen.
- Ein paar Tests ergeben etwas andere Werte, ähnlich nur bei 1:1-Bildern. Die letzten Werte stimmen überein, die ersten irgendwie nicht.
- */
 var img = "Lade-Vorschau.svg";
 
 function preprocessInput(img)
@@ -18,14 +14,14 @@ function preprocessInput(img)
         tf.tensor1d([2], "int32")
     ];
 
-    let centeredRGB = {
+    let processedValues = {
         red: tf.gather(img, indices[0], 2).sub(tf.scalar(mean[0])).div(tf.scalar(std[0])).reshape([224*224]),
         green: tf.gather(img, indices[1], 2).sub(tf.scalar(mean[1])).div(tf.scalar(std[1])).reshape([224*224]),
         blue: tf.gather(img, indices[2], 2).sub(tf.scalar(mean[2])).div(tf.scalar(std[2])).reshape([224*224]),
     };
 
     let processedTensor = tf.stack([
-        centeredRGB.red, centeredRGB.green, centeredRGB.blue
+        processedValues.red, processedValues.green, processedValues.blue
     ], 1, "float32").reshape([224, 224, 3]).expandDims();
     return processedTensor;
 }

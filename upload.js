@@ -47,7 +47,7 @@ async function readURL(input) {
       };
 
       reader.readAsDataURL(input.files[0]);
-    }, 200);
+    }, 400);
     $('#info-message').attr("style", "display: block");
   }
 }
