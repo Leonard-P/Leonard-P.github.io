@@ -31,10 +31,13 @@
                     <a class="nav-link" href="index.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Weitere Infos</a>
+                    <a class="nav-link" href="#">Demo</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Quellcode</a>
+                    <a class="nav-link" href="#">Website-Quellcode</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">GitHub-Repository des Projekts</a>
                 </li>
             </ul>
         </div>
@@ -42,14 +45,15 @@
 
     <div class="container-fluid" style="margin-top: 100px">
         <div class="row justify-content-center">
-            <div class="col-md-auto p-0 py-1" style="height: fit-content">
-                <h2>Referenzbild:</h2>
+            <div class="col-md-auto p-0 py-1" style="height: fit-content" id="mcol">
+                <h2 class="padT">Referenzbild:</h2>
                 <div class="container-fluid" id="upload-area">
                     <div class="p-3 px-1" id="upload-content">
                         <h5 class="text-muted upload-text">Laden Sie hier ein Katzenbild hoch, zu dem
                             unsere
                             KI ähnliche Katzen
-                            auswählt. Am Besten funktionieren Bilder, die die Katze mittig und im Vordergrund abbilden.
+                            auswählt. Am Besten funktionieren Bilder, die die Katze mittig und im Vordergrund
+                            abbilden.
                         </h5>
                         <!--h5 class="text-muted small bottom_aligner align-baseline">Datenschutzhinweis: Das Bild wird nur in ihren Browser hochgeladen, nicht auf externe Server. Keine weiteren Skripte oder Personen können darauf zugreifen.</h5-->
                         <input id="upload" type="file" accept="image/*" onchange="readURL(this);"
@@ -60,8 +64,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 px-5 justify-content-center">
-                <h2>Ähnliche Bilder:</h2>
+            <div class="col-md-6 px-5 justify-content-center" id="scol">
+                <h2 class="padT">Ähnliche Bilder:</h2>
                 <div class="row gx-1">
                     <div class="col-6 col-md-4 py-1">
                         <div class="card shadow-sm">
@@ -87,61 +91,117 @@
 
                     </div>
 
-                    <div class="col-md-4 py-1">
+                    <div class="col-6 col-md-4 py-1">
                         <div class="card shadow-sm">
+
                             <img class="card-img-top" src="laden.svg" alt="Bild 1" id="platz-2">
+
                             <div class="card-body">
-                                <h5 class="card-title">Platz 2</h5>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title">Platz 2</h5>
+                                    </div>
+                                    <div class="col py-0">
+                                        <p class="card-text text-end" id="info-icon">
+                                            <a href="#" class="text-end"><img src="information-button.svg" width="15px">
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
                                 <p class="card-text">Vektorabstand:</p>
-                                <a href="#" class="btn btn-outline-secondary btn-sm">Weitere Infos</a>
                             </div>
                         </div>
 
                     </div>
-
-                    <div class="col-md-4 py-1">
+                    <div class="col-6 col-md-4 py-1">
                         <div class="card shadow-sm">
+
                             <img class="card-img-top" src="laden.svg" alt="Bild 1" id="platz-3">
+
                             <div class="card-body">
-                                <h5 class="card-title">Platz 3</h5>
-                                <p class="card-text">Vektorabstand: </p>
-                                <a href="#" class="btn btn-outline-secondary btn-sm">Weitere Infos</a>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title">Platz 3</h5>
+                                    </div>
+                                    <div class="col py-0">
+                                        <p class="card-text text-end" id="info-icon">
+                                            <a href="#" class="text-end"><img src="information-button.svg" width="15px">
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <p class="card-text">Vektorabstand:</p>
                             </div>
                         </div>
 
                     </div>
-
-                    <div class="col-md-4 py-1">
+                    <div class="col-6 col-md-4 py-1">
                         <div class="card shadow-sm">
+
                             <img class="card-img-top" src="laden.svg" alt="Bild 1" id="platz-4">
+
                             <div class="card-body">
-                                <h5 class="card-title">Platz 4</h5>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title">Platz 4</h5>
+                                    </div>
+                                    <div class="col py-0">
+                                        <p class="card-text text-end" id="info-icon">
+                                            <a href="#" class="text-end"><img src="information-button.svg" width="15px">
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
                                 <p class="card-text">Vektorabstand:</p>
-                                <a href="#" class="btn btn-outline-secondary btn-sm">Weitere Infos</a>
                             </div>
                         </div>
 
                     </div>
-
-                    <div class="col-md-4 py-1">
+                    <div class="col-6 col-md-4 py-1">
                         <div class="card shadow-sm">
+
                             <img class="card-img-top" src="laden.svg" alt="Bild 1" id="platz-5">
+
                             <div class="card-body">
-                                <h5 class="card-title">Platz 5</h5>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title">Platz 5</h5>
+                                    </div>
+                                    <div class="col py-0">
+                                        <p class="card-text text-end" id="info-icon">
+                                            <a href="#" class="text-end"><img src="information-button.svg" width="15px">
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
                                 <p class="card-text">Vektorabstand:</p>
-                                <a href="#" class="btn btn-outline-secondary btn-sm">Weitere Infos</a>
                             </div>
                         </div>
 
                     </div>
-
-                    <div class="col-md-4 py-1">
+                    <div class="col-6 col-md-4 py-1">
                         <div class="card shadow-sm">
+
                             <img class="card-img-top" src="laden.svg" alt="Bild 1" id="platz-6">
+
                             <div class="card-body">
-                                <h5 class="card-title">Platz 6</h5>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title">Platz 6</h5>
+                                    </div>
+                                    <div class="col py-0">
+                                        <p class="card-text text-end" id="info-icon">
+                                            <a href="#" class="text-end"><img src="information-button.svg" width="15px">
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
                                 <p class="card-text">Vektorabstand:</p>
-                                <a href="#" class="btn btn-outline-secondary btn-sm">Weitere Infos</a>
                             </div>
                         </div>
 

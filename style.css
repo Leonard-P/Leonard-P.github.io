@@ -56,8 +56,8 @@ h1 {
     background-image: url("upload.svg");
     background-repeat: no-repeat;
     background-size: contain;
-    width: 40vw;
-    height: 40vw;
+    width: 41vw;
+    height: 41vw;
     border: white;
     border-style: solid;
     border-radius: 5px;
@@ -71,7 +71,6 @@ h1 {
     #upload-area{
         width: 35vw;
         height: 35vw;
-        background-color: teal;
     }
 
     .upload-text {
@@ -85,8 +84,20 @@ h1 {
         height: 80vw;
     }
 
+    #mcol {
+        text-align: center;
+    }
+
+    #scol {
+        text-align: center;
+    }
+
     .upload-text {
         font-size: 3vw;
+    }
+
+    .padT {
+        padding-top: 20px;
     }
 }
 
