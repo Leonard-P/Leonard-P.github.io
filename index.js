@@ -61,7 +61,8 @@ async function getSimilar(model){
   var pred = model.predict(preprocessInput(img), "float32");
   pred = tf.tensor(pred.dataSync());
   t0 = performance.now();
-  let distances = await euclidean(tf.stack(vectors), pred.reshape([1, 128]));
+  var distances = await euclidean(tf.stack(vectors), pred.reshape([1, 128]));
+  distances[889] += 100
   console.log(performance.now()-t0);
   pred.print();
   //console.log(distances);
