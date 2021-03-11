@@ -84,20 +84,13 @@ h1 {
         height: 80vw;
     }
 
-    #mcol {
-        text-align: center;
-    }
-
-    #scol {
-        text-align: center;
-    }
-
     .upload-text {
         font-size: 3vw;
     }
 
     .padT {
         padding-top: 20px;
+        text-align: center;
     }
 }
 
@@ -117,7 +110,7 @@ h1 {
 }
 
 #imageResult{
-    background-image: url(laden.svg);
+    background-image: url(Lade-Vorschau.svg);
     background-size: contain;
 }
 
@@ -127,4 +120,11 @@ h1 {
 
 #info-icon:hover {
     opacity: 80%;
+}
+
+#info-message {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    margin: 20px;
 }

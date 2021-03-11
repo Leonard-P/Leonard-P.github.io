@@ -31,13 +31,16 @@
                     <a class="nav-link" href="index.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Demo</a>
+                    <a class="nav-link" href="demo.html">Demo</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Website-Quellcode</a>
+                    <a class="nav-link" href="https://github.com/Leonard-P/Catlab-Webdemo">Website-Quellcode</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">GitHub-Repository des Projekts</a>
+                    <a class="nav-link" href="https://github.com/Leonard-P/Catlab">GitHub-Repository des Projekts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="img-sources.html">Bildquellen</a>
                 </li>
             </ul>
         </div>
@@ -55,8 +58,7 @@
                             auswählt. Am Besten funktionieren Bilder, die die Katze mittig und im Vordergrund
                             abbilden.
                         </h5>
-                        <!--h5 class="text-muted small bottom_aligner align-baseline">Datenschutzhinweis: Das Bild wird nur in ihren Browser hochgeladen, nicht auf externe Server. Keine weiteren Skripte oder Personen können darauf zugreifen.</h5-->
-                        <input id="upload" type="file" accept="image/*" onchange="readURL(this);"
+                        <input id="upload" type="file" accept=".jpeg,.webp,.jpg,.gif,.png"" onchange=" readURL(this);"
                             class="form-control border-0" style="height:0">
                         <label for="upload" class="btn btn-secondary"> <i
                                 class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-white">Bild
@@ -70,7 +72,7 @@
                     <div class="col-6 col-md-4 py-1">
                         <div class="card shadow-sm">
 
-                            <img class="card-img-top" src="laden.svg" alt="Bild 1" id="platz-1">
+                            <img class="card-img-top" src="Lade-Vorschau.svg" alt="Bild 1" id="platz-1">
 
                             <div class="card-body">
 
@@ -94,7 +96,7 @@
                     <div class="col-6 col-md-4 py-1">
                         <div class="card shadow-sm">
 
-                            <img class="card-img-top" src="laden.svg" alt="Bild 1" id="platz-2">
+                            <img class="card-img-top" src="Lade-Vorschau.svg" alt="Bild 1" id="platz-2">
 
                             <div class="card-body">
 
@@ -117,7 +119,7 @@
                     <div class="col-6 col-md-4 py-1">
                         <div class="card shadow-sm">
 
-                            <img class="card-img-top" src="laden.svg" alt="Bild 1" id="platz-3">
+                            <img class="card-img-top" src="Lade-Vorschau.svg" alt="Bild 1" id="platz-3">
 
                             <div class="card-body">
 
@@ -140,7 +142,7 @@
                     <div class="col-6 col-md-4 py-1">
                         <div class="card shadow-sm">
 
-                            <img class="card-img-top" src="laden.svg" alt="Bild 1" id="platz-4">
+                            <img class="card-img-top" src="Lade-Vorschau.svg" alt="Bild 1" id="platz-4">
 
                             <div class="card-body">
 
@@ -163,7 +165,7 @@
                     <div class="col-6 col-md-4 py-1">
                         <div class="card shadow-sm">
 
-                            <img class="card-img-top" src="laden.svg" alt="Bild 1" id="platz-5">
+                            <img class="card-img-top" src="Lade-Vorschau.svg" alt="Bild 1" id="platz-5">
 
                             <div class="card-body">
 
@@ -186,7 +188,7 @@
                     <div class="col-6 col-md-4 py-1">
                         <div class="card shadow-sm">
 
-                            <img class="card-img-top" src="laden.svg" alt="Bild 1" id="platz-6">
+                            <img class="card-img-top" src="Lade-Vorschau.svg" alt="Bild 1" id="platz-6">
 
                             <div class="card-body">
 
@@ -208,6 +210,14 @@
                     </div>
 
                 </div>
+            </div>
+        </div>
+        <div id="msg-listener">
+            <div class="alert alert-info" role="alert" id="info-message" style="display: none;">
+                <h4 class="alert-heading">Bitte haben Sie ein paar Sekunden Geduld!</h4>
+                <p class="mb-0">Das Modell wird gerade heruntergeladen. Bei der Anwendung zur Sortierung von
+                    Vermisstenmeldungen auf Seiten wie <a href="https://tasso.net" class="alert-link">Tasso</a> entfällt
+                    dieser Schritt, da die Ressourcen zur serverseitigen Ausführung zur Verfügung stehen.</p>
             </div>
         </div>
     </div>

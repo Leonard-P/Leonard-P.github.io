@@ -1,8 +1,4 @@
-/**
- Keine Ahnung, ob das Preprocessing korrekt funktioniert. Hab versucht, die preprocess_input so genau wie möglich nach JS zu übersetzen.
- Ein paar Tests ergeben etwas andere Werte, ähnlich nur bei 1:1-Bildern. Die letzten Werte stimmen überein, die ersten irgendwie nicht.
- */
-var img = "laden.svg";
+var img = "Lade-Vorschau.svg";
 
 function preprocessInput(img)
 {
@@ -18,14 +14,14 @@ function preprocessInput(img)
         tf.tensor1d([2], "int32")
     ];
 
-    let centeredRGB = {
+    let processedValues = {
         red: tf.gather(img, indices[0], 2).sub(tf.scalar(mean[0])).div(tf.scalar(std[0])).reshape([224*224]),
         green: tf.gather(img, indices[1], 2).sub(tf.scalar(mean[1])).div(tf.scalar(std[1])).reshape([224*224]),
         blue: tf.gather(img, indices[2], 2).sub(tf.scalar(mean[2])).div(tf.scalar(std[2])).reshape([224*224]),
     };
 
     let processedTensor = tf.stack([
-        centeredRGB.red, centeredRGB.green, centeredRGB.blue
+        processedValues.red, processedValues.green, processedValues.blue
     ], 1, "float32").reshape([224, 224, 3]).expandDims();
     return processedTensor;
 }
@@ -65,7 +61,6 @@ async function getSimilar(model){
   distances[889] += 100
   console.log(performance.now()-t0);
   pred.print();
-  //console.log(distances);
   t0 = performance.now();
   indices = sortWithIndices(distances).sortIndices;
   console.log(performance.now()-t0);
@@ -73,6 +68,7 @@ async function getSimilar(model){
     document.getElementById('platz-'+i.toString()).src = "data/" + indices[i].toString() + ".jpg";
     document.getElementById('platz-'+i.toString()).parentElement.getElementsByClassName("card-text")[1].textContent = "Vektorabstand: " + distances[i].toFixed(3).toString();
   }
+  $('#info-message').attr("style", "display: none");
 }
 
 
