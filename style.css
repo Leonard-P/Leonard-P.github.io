@@ -59,6 +59,32 @@ h1 {
     width: 40vw;
     height: 40vw;
     border: none;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+}
+
+@media (max-width: 991px) {
+    #upload-area{
+        width: 35vw;
+        height: 35vw;
+        background-color: teal;
+    }
+
+    .upload-text {
+        font-size: 1.5vw;
+    }
+}
+
+@media (max-width: 767px) {
+    #upload-area{
+        width: 80vw;
+        height: 80vw;
+    }
+
+    .upload-text {
+        font-size: 3vw;
+    }
 }
 
 #upload-label {
@@ -81,9 +107,6 @@ h1 {
     background-size: contain;
 }
 
-h5 {
-    font-size: 1.5vw;
-}
 #info-icon {
      opacity: 50%;
 }
