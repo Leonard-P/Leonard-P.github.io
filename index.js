@@ -2,7 +2,7 @@
  Keine Ahnung, ob das Preprocessing korrekt funktioniert. Hab versucht, die preprocess_input so genau wie möglich nach JS zu übersetzen.
  Ein paar Tests ergeben etwas andere Werte, ähnlich nur bei 1:1-Bildern. Die letzten Werte stimmen überein, die ersten irgendwie nicht.
  */
-var img = "laden.svg";
+var img = "Lade-Vorschau.svg";
 
 function preprocessInput(img)
 {
@@ -64,7 +64,6 @@ async function getSimilar(model){
   let distances = await euclidean(tf.stack(vectors), pred.reshape([1, 128]));
   console.log(performance.now()-t0);
   pred.print();
-  //console.log(distances);
   t0 = performance.now();
   indices = sortWithIndices(distances).sortIndices;
   console.log(performance.now()-t0);
@@ -72,6 +71,7 @@ async function getSimilar(model){
     document.getElementById('platz-'+i.toString()).src = "data/" + indices[i].toString() + ".jpg";
     document.getElementById('platz-'+i.toString()).parentElement.getElementsByClassName("card-text")[1].textContent = "Vektorabstand: " + distances[i].toFixed(3).toString();
   }
+  $('#info-message').attr("style", "display: none");
 }
 
 
