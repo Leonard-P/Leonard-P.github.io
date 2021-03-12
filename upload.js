@@ -56,9 +56,9 @@ async function readURL(input) {
   $('#info-message2').attr('style', 'display: block'); 
 }*/
 
-function hideInfo(input){
+/*function hideInfo(input){
   $('#info-message2').attr('style', 'display: none'); 
-}
+}*/
 
 function showInfo(input){
   document.getElementById("infoModal").style.display = "block";
