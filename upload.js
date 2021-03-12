@@ -52,14 +52,6 @@ async function readURL(input) {
   }
 }
 
-/*function showInfo(input){
-  $('#info-message2').attr('style', 'display: block'); 
-}*/
-
-/*function hideInfo(input){
-  $('#info-message2').attr('style', 'display: none'); 
-}*/
-
 function showInfo(input){
   document.getElementById("infoModal").style.display = "block";
 }

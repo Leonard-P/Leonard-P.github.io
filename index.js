@@ -59,15 +59,15 @@ async function getSimilar(model){
   t0 = performance.now();
   var distances = await euclidean(tf.stack(vectors), pred.reshape([1, 128]));
   // ugly fix for grey image
-  distances[889] += 100
+  console.log(distances[0])
   console.log(performance.now()-t0);
   pred.print();
   t0 = performance.now();
   indices = sortWithIndices(distances).sortIndices;
   console.log(performance.now()-t0);
   for (let i=1; i<=6; i++){
-    document.getElementById('platz-'+i.toString()).src = "data/" + indices[i].toString() + ".jpg";
-    document.getElementById('platz-'+i.toString()).parentElement.getElementsByClassName("card-text")[1].textContent = "Vektorabstand: " + distances[i].toFixed(3).toString();
+    document.getElementById('platz-'+i.toString()).src = "data/" + indices[i-1].toString() + ".jpg";
+    document.getElementById('platz-'+i.toString()).parentElement.getElementsByClassName("card-text")[1].textContent = "Vektorabstand: " + distances[i-1].toFixed(3).toString();
   }
   $('#info-message').attr("style", "display: none");
 }

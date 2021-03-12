@@ -38,7 +38,7 @@ loadImage = async img => {
 
 async function createVectors(model){
     var vectors = 'var vecs = [';
-    for(let i=0; i<=100; i++){
+    for(let i=0; i<=2000; i++){
         let img = new Image;
         img.src = '/data/' + i.toString() + '.jpg';
         await loadImage(img);
