@@ -3,7 +3,7 @@ var img = "Lade-Vorschau.svg";
 function preprocessInput(img)
 {
     img = tf.browser.fromPixels(img);
-    img = tf.image.resizeBilinear(img, [224, 224]).toFloat();
+    img = tf.image.resizeBilinear(img, [350, 350]).toFloat();
     img = img.div(tf.scalar(255.0));
     mean = [0.485, 0.456, 0.406];
     std = [0.229, 0.224, 0.225];
@@ -15,14 +15,14 @@ function preprocessInput(img)
     ];
 
     let processedValues = {
-        red: tf.gather(img, indices[0], 2).sub(tf.scalar(mean[0])).div(tf.scalar(std[0])).reshape([224*224]),
-        green: tf.gather(img, indices[1], 2).sub(tf.scalar(mean[1])).div(tf.scalar(std[1])).reshape([224*224]),
-        blue: tf.gather(img, indices[2], 2).sub(tf.scalar(mean[2])).div(tf.scalar(std[2])).reshape([224*224]),
+        red: tf.gather(img, indices[0], 2).sub(tf.scalar(mean[0])).div(tf.scalar(std[0])).reshape([350*350]),
+        green: tf.gather(img, indices[1], 2).sub(tf.scalar(mean[1])).div(tf.scalar(std[1])).reshape([350*350]),
+        blue: tf.gather(img, indices[2], 2).sub(tf.scalar(mean[2])).div(tf.scalar(std[2])).reshape([350*350]),
     };
 
     let processedTensor = tf.stack([
         processedValues.red, processedValues.green, processedValues.blue
-    ], 1, "float32").reshape([224, 224, 3]).expandDims();
+    ], 1, "float32").reshape([350, 350, 3]).expandDims();
     return processedTensor;
 }
 
