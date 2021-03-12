@@ -58,7 +58,7 @@
                             auswählt. Am Besten funktionieren Bilder, die die Katze mittig und im Vordergrund
                             abbilden.
                         </h5>
-                        <input id="upload" type="file" accept=".jpeg,.webp,.jpg,.gif,.png"" onchange=" readURL(this);"
+                        <input id="upload" type="file" accept=".jpeg,.webp,.jpg,.gif,.png" onchange=" readURL(this);"
                             class="form-control border-0" style="height:0">
                         <label for="upload" class="btn btn-secondary"> <i
                                 class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-white">Bild
@@ -81,7 +81,7 @@
                                         <h5 class="card-title">Platz 1</h5>
                                     </div>
                                     <div class="col py-0">
-                                        <p class="card-text text-end" id="info-icon">
+                                        <p class="card-text text-end" id="info-icon" onclick="showInfo(this)">
                                             <a href="#" class="text-end"><img src="information-button.svg" width="15px">
                                             </a>
                                         </p>
@@ -105,7 +105,7 @@
                                         <h5 class="card-title">Platz 2</h5>
                                     </div>
                                     <div class="col py-0">
-                                        <p class="card-text text-end" id="info-icon">
+                                        <p class="card-text text-end" id="info-icon" onclick="showInfo(this)">
                                             <a href="#" class="text-end"><img src="information-button.svg" width="15px">
                                             </a>
                                         </p>
@@ -128,7 +128,7 @@
                                         <h5 class="card-title">Platz 3</h5>
                                     </div>
                                     <div class="col py-0">
-                                        <p class="card-text text-end" id="info-icon">
+                                        <p class="card-text text-end" id="info-icon" onclick="showInfo(this)">
                                             <a href="#" class="text-end"><img src="information-button.svg" width="15px">
                                             </a>
                                         </p>
@@ -151,7 +151,7 @@
                                         <h5 class="card-title">Platz 4</h5>
                                     </div>
                                     <div class="col py-0">
-                                        <p class="card-text text-end" id="info-icon">
+                                        <p class="card-text text-end" id="info-icon" onclick="showInfo(this)">
                                             <a href="#" class="text-end"><img src="information-button.svg" width="15px">
                                             </a>
                                         </p>
@@ -174,7 +174,7 @@
                                         <h5 class="card-title">Platz 5</h5>
                                     </div>
                                     <div class="col py-0">
-                                        <p class="card-text text-end" id="info-icon">
+                                        <p class="card-text text-end" id="info-icon" onclick="showInfo(this)">
                                             <a href="#" class="text-end"><img src="information-button.svg" width="15px">
                                             </a>
                                         </p>
@@ -197,7 +197,7 @@
                                         <h5 class="card-title">Platz 6</h5>
                                     </div>
                                     <div class="col py-0">
-                                        <p class="card-text text-end" id="info-icon">
+                                        <p class="card-text text-end" id="info-icon" onclick="showInfo(this)">
                                             <a href="#" class="text-end"><img src="information-button.svg" width="15px">
                                             </a>
                                         </p>
@@ -218,6 +218,14 @@
                 <p class="mb-0">Das Modell wird gerade heruntergeladen. Bei der Anwendung zur Sortierung von
                     Vermisstenmeldungen auf Seiten wie <a href="https://tasso.net" class="alert-link">Tasso</a> entfällt
                     dieser Schritt, da die Ressourcen zur serverseitigen Ausführung zur Verfügung stehen.</p>
+            </div>
+        </div>
+        <div id="info-listener">
+            <div class="alert alert-info" role="alert" id="info-message2" style="display: none;">
+                <span id='close' onclick='hideInfo(this)'>x</span>
+                <p class="mb-0">Für jedes Bild generiert das Neuronale Netz einen Vektor. Je kleiner der Abstand der 
+                    Vektoren zweier Bilder, desto ähnlicher sehen sich die Katzen. Weitere Informationen finden Sie im 
+                    GitHub-Repository des Projektes. </p>
             </div>
         </div>
     </div>

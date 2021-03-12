@@ -51,3 +51,11 @@ async function readURL(input) {
     $('#info-message').attr("style", "display: block");
   }
 }
+
+function showInfo(input){
+  $('#info-message2').attr('style', 'display: block'); 
+}
+
+function hideInfo(input){
+  $('#info-message2').attr('style', 'display: none'); 
+}
