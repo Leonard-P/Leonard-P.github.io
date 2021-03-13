@@ -181,3 +181,7 @@ h1 {
     color: rgb(105, 105, 105);
     text-decoration: underline
 }
+
+.cp {
+    display: none;
+}
