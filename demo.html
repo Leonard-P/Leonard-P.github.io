@@ -18,8 +18,9 @@
     <title>Catlab Demo</title>
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-sm fixed-top shadow-sm">
+<body class="d-flex flex-column min-vh-100">
+
+    <nav class="navbar navbar-expand-sm static-top shadow-sm">
         <a class="navbar-brand px-3" href="index.html">
             <strong>Catlab</strong></a>
         <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#items">
@@ -34,22 +35,16 @@
                     <a class="nav-link" href="demo.html">Demo</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="https://github.com/Leonard-P/Catlab-Webdemo">Website-Quellcode</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://github.com/Leonard-P/Catlab">GitHub-Repository des Projekts</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="img-sources.html">Bildquellen</a>
+                    <a class="nav-link" href="https://github.com/Leonard-P/Catlab">GitHub des Projekts</a>
                 </li>
             </ul>
         </div>
     </nav>
 
-    <div class="container-fluid" style="margin-top: 100px">
-        <div class="row justify-content-center">
+    <div class="container-fluid">
+        <div class="row justify-content-center pt-2">
             <div class="col-md-auto p-0 py-1" style="height: fit-content" id="mcol">
-                <h2 class="padT">Referenzbild:</h2>
+                <h2 class="col-head pt-3">Referenzbild:</h2>
                 <div class="container-fluid" id="upload-area">
                     <div class="p-3 px-1" id="upload-content">
                         <h5 class="text-muted upload-text">Laden Sie hier ein Katzenbild hoch, zu dem
@@ -67,7 +62,7 @@
                 </div>
             </div>
             <div class="col-md-6 px-5 justify-content-center" id="scol">
-                <h2 class="padT">Ähnliche Bilder:</h2>
+                <h2 class="col-head pt-3">Ähnliche Bilder:</h2>
                 <div class="row gx-1">
                     <div class="col-6 col-md-4 py-1">
                         <div class="card shadow-sm">
@@ -76,7 +71,7 @@
 
                             <div class="card-body">
 
-                                <div class="row" >
+                                <div class="row">
                                     <div class="col">
                                         <h5 class="card-title">Platz 1</h5>
                                     </div>
@@ -243,6 +238,30 @@
         </div>
 
     </div>
+
+    <footer class="bg-light text-center mt-auto pt-3">
+        <div class="row align-content-between">
+            <div class="col-12 col-md-auto gx-3">
+                <div class="row gy-2 pt-0 pb-2 text-start mx-4">
+                    <div class="col-6 col-md-auto">
+                        <a class="bottom-text bottom-link" href="https://github.com/Leonard-P/Catlab-Webdemo">Website-Quellcode</a>
+                    </div>
+                    <div class="col-6 col-md-auto">
+                        <a class="bottom-text bottom-link" href="https://github.com/Leonard-P/Catlab">GitHub des Projekts</a>
+                    </div>
+                    <div class="col-6 col-md-auto">
+                        <a class="bottom-text bottom-link" href="img-sources.html">Bildquellen</a>
+                    </div>
+                    <div class="col-6 col-md-auto">
+                        <a class="bottom-text bottom-link" href="licenses.html">Open-Source-Lizenzen</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 text-end bottom-text">
+                © 2021 Copyright: Jonas Thumbs und Leonard Prokisch
+            </div>
+        </div>
+    </footer>
 
     <script src="infomodal.js"></script>
 </body>

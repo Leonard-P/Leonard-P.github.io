@@ -43,6 +43,12 @@ h1 {
     font-weight: 450;
 }
 
+@media (max-width: 1200px) {
+    #catlab-title {
+        font-size: 2.5vw;
+    }
+}
+
 #logo-text {
     font-size: 4.5vw;
 }
@@ -88,8 +94,7 @@ h1 {
         font-size: 3vw;
     }
 
-    .padT {
-        padding-top: 20px;
+    .col-head {
         text-align: center;
     }
 }
@@ -157,3 +162,17 @@ h1 {
     text-decoration: none;
     cursor: pointer;
   }
+
+.bg-light {
+    background-color:rgb(150, 150, 150);
+}
+
+.bottom-text {
+    color: rgb(105, 105, 105);
+    text-decoration: none
+}
+
+.bottom-link:hover {
+    color: rgb(105, 105, 105);
+    text-decoration: underline
+}
