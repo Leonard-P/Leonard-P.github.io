@@ -177,7 +177,24 @@ h1 {
     text-decoration: none
 }
 
+@media (max-width: 450px) {
+    .bottom-link{
+        font-size: 2vw
+    }
+}
+
+@media (max-width: 500px) {
+    .cp{
+        font-size: 1.5vw
+    }
+}
+
 .bottom-link:hover {
     color: rgb(105, 105, 105);
     text-decoration: underline
 }
+
+.cp {
+    opacity: 50%;
+}
+
