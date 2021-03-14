@@ -179,13 +179,13 @@ h1 {
 
 @media (max-width: 450px) {
     .bottom-link{
-        font-size: 2vw
+        font-size: 3vw
     }
 }
 
 @media (max-width: 500px) {
     .cp{
-        font-size: 1.5vw
+        font-size: 2vw
     }
 }
 
