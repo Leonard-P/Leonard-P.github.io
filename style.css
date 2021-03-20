@@ -177,13 +177,13 @@ h1 {
     text-decoration: none
 }
 
-@media (max-width: 450px) {
+@media (max-width: 450px) { /*450px*/
     .bottom-link{
         font-size: 3vw
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
     .cp{
         font-size: 2vw
     }
@@ -196,5 +196,9 @@ h1 {
 
 .cp {
     opacity: 50%;
+}
+
+#info-message {
+    z-index: 2;
 }
 
