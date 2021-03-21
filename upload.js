@@ -73,50 +73,46 @@ function preprocessInput(img) {
 
 async function readURL(input) {
   if (input.files && input.files[0]) {
-    setTimeout(function (e) {
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        crop(e.target.result, 1).then((img) => {
-          $("#upload-area").attr(
-            "style",
-            "background-image: url(" + img.toDataURL() + ")"
-          );
-          document.getElementById("upload-area").style.backgroundRepeat =
-            "no-repeat";
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      crop(e.target.result, 1).then((img) => {
+        $("#upload-area").attr(
+          "style",
+          "background-image: url(" + img.toDataURL() + ")"
+        );
+        document.getElementById("upload-area").style.backgroundRepeat =
+          "no-repeat";
 
-          $("#upload-content").attr("style", "display: none");
+        $("#upload-content").attr("style", "display: none");
 
-          var preprocessedInput = new Image();
-          preprocessedInput.src = img.toDataURL();
-          var worker = new Worker("worker.js");
-          preprocessedInput.onload = () => {
-            img = preprocessInput(preprocessedInput);
+        var preprocessedInput = new Image();
+        preprocessedInput.src = img.toDataURL();
+        var worker = new Worker("worker.js");
+        preprocessedInput.onload = () => {
+          img = preprocessInput(preprocessedInput);
 
-            worker.postMessage(img);
-          };
+          worker.postMessage(img);
+        };
 
-          worker.addEventListener("message", function (e) {
-            var distances = e.data;
-            var indices = distances.sortIndices;
-            for (let i = 1; i <= 6; i++) {
-              document.getElementById("platz-" + i.toString()).src =
-                "data/" + indices[i - 1].toString() + ".jpg";
-              document
-                .getElementById("platz-" + i.toString())
-                .parentElement.getElementsByClassName(
-                  "card-text"
-                )[1].textContent =
-                "Vektorabstand: " + distances[i - 1].toFixed(3).toString();
-            }
-            $("#info-message").attr("style", "display: none");
-          });
-
-          //loadAndExecuteModel(img);
+        worker.addEventListener("message", function (e) {
+          var distances = e.data;
+          var indices = distances.sortIndices;
+          for (let i = 1; i <= 6; i++) {
+            document.getElementById("platz-" + i.toString()).src =
+              "data/" + indices[i - 1].toString() + ".jpg";
+            document
+              .getElementById("platz-" + i.toString())
+              .parentElement.getElementsByClassName(
+                "card-text"
+              )[1].textContent =
+              "Vektorabstand: " + distances[i - 1].toFixed(3).toString();
+          }
+          $("#info-message").attr("style", "display: none");
         });
-      };
+      });
+    };
 
-      reader.readAsDataURL(input.files[0]);
-    }, 400);
+    reader.readAsDataURL(input.files[0]);
     $("#info-message").attr("style", "display: block");
   }
 }
