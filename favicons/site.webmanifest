@@ -1,6 +1,7 @@
 {
     "name": "CatLab - KI zur Identifikation vermisster Katzen",
     "short_name": "CatLab",
+    "start_url": "www.catlab-ai.de",
     "icons": [
         {
             "src": "android-chrome-192x192.png",
