@@ -29,10 +29,17 @@ async function euclidean(x, y) {
 }
 
 async function loadAndExecuteModel(imgData) {
+  let t0 = performance.now();
   const model = await tf.loadLayersModel("base/model.json");
+  let t1 = performance.now();
+  console.log("Loaded model in " + (t1 - t0).toString() + " ms");
   var pred = model.predict(imgData, "float32");
+  let t2 = performance.now();
+  console.log("Prediction took " + (t2 - t1).toString() + " ms");
   pred = tf.tensor(pred.dataSync());
   var distances = await euclidean(tf.stack(vectors), pred.reshape([1, 128]));
+  let t3 = performance.now();
+  console.log("Compared to vectors in " + (t3 - t2).toString() + " ms");
   self.postMessage(sortWithIndices(distances));
   self.close();
 }
