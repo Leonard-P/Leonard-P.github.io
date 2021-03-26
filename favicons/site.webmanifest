@@ -1,6 +1,6 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "CatLab - KI zur Identifikation vermisster Katzen",
+    "short_name": "CatLab",
     "icons": [
         {
             "src": "android-chrome-192x192.png",
